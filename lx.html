@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+	*{
+		 margin: 0;
+		 padding: 0;
+	}
+	li{
+		 float: left;
+		 list-style: none; 
+		 margin: 0 10px;
+		 margin-top: 50px;
+		 width: 30px; 
+		 height: 30px;
+		 background: #00B7FF;
+		 text-align: center; 
+		 line-height: 30px;
+		 }
+	</style>
+	<body>
+		<input type="text" name="" id="" value="" />
+		<button id="but">搜索</button>
+		<p></p>
+		<script type="text/javascript">
+		$(function(){
+		$('#but').click(function(){
+			var cc = $('input').val();
+			if(cc!==''){
+			$.ajax({
+				url:"http://localhost:3000/item/list",
+            	type:'post',
+            	dataType:'json',
+            	data:{e:cc},
+            	success:function(e){
+            		var lx = ''
+            		for(i in e){
+            			lx+=e[i].name+e[i].score
+            		}
+            		$('p').html(lx)
+            	}
+			})
+			}
+			})
+		})	
+</script>
+</body>
+</html>
